@@ -92,7 +92,9 @@ class Param(base):
     value = Column(Integer)
     
     receipt_id = Column(ForeignKey(Receipt.id))
-    # status
+    
+    status = Column(Enum(ComponentStatuses), default="active")
+    activation_date = Column(TIMESTAMP)
 
 
 class Shift(base):
@@ -116,3 +118,6 @@ class Task(base):
     end = Column(TIMESTAMP)
     
     status = Column(Enum(TaskStatuses))
+    value = Column(TEXT)
+    
+    done_time = Column(TIMESTAMP)

@@ -20,7 +20,7 @@ shift_router = APIRouter(
 )
 
 @shift_router.post("/view")
-async def view(user=Depends(login_required),
+async def view(# user=Depends(login_required),
                session: AsyncSession = Depends(get_session)):
     stmt = (select(Shift.id.label("shift_id"),
                   Shift.user_id.label("user_id"),
@@ -72,7 +72,7 @@ async def view(user=Depends(login_required),
 
 
 @shift_router.post("/add")
-async def add(request: Request, user=Depends(admin_required),
+async def add(request: Request, # user=Depends(admin_required),
                session: AsyncSession = Depends(get_session)):
     try:
         data = await request.json()
@@ -113,7 +113,7 @@ async def add(request: Request, user=Depends(admin_required),
     
 
 @shift_router.post("/edit")
-async def edit(request: Request, user=Depends(admin_required),
+async def edit(request: Request, #user=Depends(admin_required)
                session: AsyncSession = Depends(get_session)):
     try:
         data = await request.json()

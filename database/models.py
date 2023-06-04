@@ -55,6 +55,7 @@ class Receipt(base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     
+    out_weight = Column(Integer)
     product_id = Column(ForeignKey(Product.id))
     
     

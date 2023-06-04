@@ -23,8 +23,7 @@ app.include_router(task_router)
 
 
 @app.post("/user/view")
-async def view(user=Depends(admin_required),
-               session: AsyncSession = Depends(get_session)):
+async def view(session: AsyncSession = Depends(get_session)):
     stmt = (select(User.id.label("user_id"),
                    (User.first_name + ' ' + 
                    User.second_name + ' ' +

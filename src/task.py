@@ -24,7 +24,7 @@ task_router = APIRouter(
 
 
 @task_router.post("/today")
-async def view_today(user=Depends(login_required),
+async def view_today(# user=Depends(login_required),
                      session: AsyncSession=Depends(get_session)):
     tasks = (await session.execute(
             select(Task.id.label("task_id"), 
@@ -47,7 +47,7 @@ async def view_today(user=Depends(login_required),
 
 
 @task_router.post("/add")
-async def add(request: Request, user=Depends(admin_required),
+async def add(request: Request, #user=Depends(admin_required),
                      session: AsyncSession=Depends(get_session)):
     try:
         data = await request.json()
@@ -99,7 +99,7 @@ async def add(request: Request, user=Depends(admin_required),
     
     
 @task_router.post("/confirm")
-async def confirm(request: Request, user=Depends(login_required),
+async def confirm(request: Request, # user=Depends(login_required),
                      session: AsyncSession=Depends(get_session)):
     try:
         data = await request.json()
@@ -134,7 +134,7 @@ async def confirm(request: Request, user=Depends(login_required),
     
 
 @task_router.post("/unconfirm")
-async def unconfirm(request: Request, user=Depends(login_required),
+async def unconfirm(request: Request, #user=Depends(login_required),
                      session: AsyncSession=Depends(get_session)):
     try:
         data = await request.json()
@@ -169,7 +169,7 @@ async def unconfirm(request: Request, user=Depends(login_required),
     
 
 @task_router.post("/edit")
-async def edit(request: Request, user=Depends(admin_required),
+async def edit(request: Request, #user=Depends(admin_required),
                      session: AsyncSession=Depends(get_session)):
     try:
         data = await request.json()
@@ -222,7 +222,7 @@ async def edit(request: Request, user=Depends(admin_required),
     
     
 @task_router.post("/delete")
-async def task_del(request: Request, user=Depends(admin_required),
+async def task_del(request: Request, #user=Depends(admin_required),
                      session: AsyncSession=Depends(get_session)):
     try:
         data = await request.json()

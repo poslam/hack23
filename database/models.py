@@ -114,6 +114,8 @@ class Task(base):
     id = Column(Integer, primary_key=True)
     user_id = Column(ForeignKey(User.id))
     
+    name = Column(TEXT)
+    
     begin = Column(TIMESTAMP)
     end = Column(TIMESTAMP)
     

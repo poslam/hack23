@@ -119,7 +119,7 @@ async def signup(request: Request,
     try:
         await session.execute(stmt)
         await session.commit()
-        return {"detail": "successfully registered"}
+        return {"detail": "successfully registered", "num": num}
     except Exception as e:
         print(e)
         await session.rollback()

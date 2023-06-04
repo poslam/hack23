@@ -6,4 +6,4 @@ if platform == "linux" or platform == "linux2" or platform == "darwin":
 elif platform == "win32":
     os.system("python -m uvicorn src.app:app --reload --port 8000")
 else:
-    print(f"No matching function to OS {platform}")
+    print(f"No matching function to OS {platform}") 

@@ -29,7 +29,8 @@ async def view(# user=Depends(login_required),
                    User.second_name + ' ' +
                    User.third_name).label("user_name"),
                   Shift.shift_time.label("shift_time"))
-            .join(User, User.id == Shift.user_id))
+            .join(User, User.id == Shift.user_id)
+            .order_by(Shift.date))
     
     shifts = (await session.execute(stmt)).all()
     

@@ -28,5 +28,7 @@ async def view(user=Depends(login_required),
     
     result = []
     
-    for receipt in base:
-        pass
+    for prod in base:
+        temp = {"product_id": prod.product_id}
+        
+        

@@ -92,6 +92,7 @@ class Param(base):
     value = Column(Integer)
     
     receipt_id = Column(ForeignKey(Receipt.id))
+    # status
 
 
 class Shift(base):

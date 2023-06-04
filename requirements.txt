@@ -8,3 +8,4 @@ PyJWT
 werkzeug
 uvicorn
 asyncpg
+greenlet

@@ -1,10 +1,8 @@
-from datetime import datetime, timedelta
-import pathlib
+from datetime import timedelta
 from random import randint
-import ujson
 import jwt
-from jwt import decode, encode
-from sqlalchemy import insert, select, func
+from jwt import decode
+from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -71,7 +69,7 @@ async def login(request: Request,
         user = user[0]
 
     else:
-        return HTTPException(status_code=400, detail="user doesn't exist")
+        raise HTTPException(status_code=400, detail="user doesn't exist")
 
     if check_password_hash(user.password, password):
         token = jwt.encode(
@@ -81,7 +79,7 @@ async def login(request: Request,
         
         return {"token": token, "type": user.type.name}
 
-    return HTTPException(status_code=400, detail="wrong auth data")
+    raise HTTPException(status_code=400, detail="wrong auth data")
 
 
 @auth_router.post("/signup")
@@ -96,7 +94,7 @@ async def signup(request: Request,
     except:
         raise HTTPException(status_code=400, detail="incorrect request")
 
-    num = randint(0, 1000)
+    num = randint(1000, 9999)
     
     user_num = (await session.execute(
         select(User).where(User.num == num)

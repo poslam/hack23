@@ -25,8 +25,8 @@ async def view(# user=Depends(login_required),
     stmt = (select(Shift.id.label("shift_id"),
                   Shift.user_id.label("user_id"),
                   Shift.date.label("date"),
-                  (User.first_name + ' ' + 
-                   User.second_name + ' ' +
+                  (User.second_name + ' ' + 
+                   User.first_name + ' ' +
                    User.third_name).label("user_name"),
                   Shift.shift_time.label("shift_time"))
             .join(User, User.id == Shift.user_id)

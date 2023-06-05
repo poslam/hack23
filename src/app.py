@@ -25,8 +25,8 @@ app.include_router(task_router)
 @app.post("/user/view")
 async def view(session: AsyncSession = Depends(get_session)):
     stmt = (select(User.id.label("user_id"),
-                   (User.first_name + ' ' + 
-                   User.second_name + ' ' +
+                   (User.second_name + ' ' + 
+                   User.first_name + ' ' +
                    User.third_name).label("user_name")))
     
     result = (await session.execute(stmt)).all()

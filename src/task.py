@@ -34,8 +34,8 @@ async def view_today(# user=Depends(login_required),
                    Task.status,
                    Task.name.label("task_name"),
                    User.id.label("user_id"),
-                   (User.first_name + ' ' + 
-                   User.second_name + ' ' +
+                   (User.second_name + ' ' + 
+                   User.first_name + ' ' +
                    User.third_name).label("user_name"))
             .where(Task.begin <= time().date())
             .where(Task.end >= time().date())

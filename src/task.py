@@ -121,7 +121,8 @@ async def confirm(request: Request, # user=Depends(login_required),
     
     stmt = (update(Task)
             .where(Task.id == task_id)
-            .values(status="done"))
+            .values(status="done")
+            .values(done_time=time()))
     
     try:
         await session.execute(stmt)
@@ -156,12 +157,13 @@ async def unconfirm(request: Request, #user=Depends(login_required),
 
     stmt = (update(Task)
             .where(Task.id == task_id)
-            .values(status="active"))
+            .values(status="active")
+            .values(done_time=None))
     
     try:
         await session.execute(stmt)
         await session.commit()
-        return {"detail": "task confirm success"}
+        return {"detail": "task unconfirm success"}
     except Exception as e:
         print(e)
         await session.rollback()

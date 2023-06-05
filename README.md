@@ -4,4 +4,4 @@
 
 Ссылка на гит с приложением: https://github.com/Farma20/SummerHahaton
 
-Ссылка на диск с APK, презентацией и скринкастом (также презентация есть на projects): https://disk.yandex.ru/d/DQO2JZbW-Gueww
+Ссылка на диск с APK, презентацией, паспортом проекта, спичем и скринкастом (также презентация есть на projects): https://disk.yandex.ru/d/DQO2JZbW-Gueww
